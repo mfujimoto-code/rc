@@ -184,7 +184,7 @@ nnoremap <expr> Q g:QuitBuffer()
 
 set	incsearch
 set	hlsearch
-map	H	:nohl
+map		:nohl
 " to keep few number of line for searching as incremental
 set	scrolloff=2
 
