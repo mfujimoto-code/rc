@@ -44,6 +44,7 @@ nnoremap	;	q:
 nnoremap	Y	ma1GVGy'a
 nnoremap	`	:ls:buffer
 nnoremap <silent> W :<C-u>execute 'set ts=' . nr2char(getchar()) . ' sw=0'<CR>
+nnoremap	<C-t>	:term
 
 
 " nnoremap	<C-f>	l
@@ -61,7 +62,7 @@ function! s:setupMKeys()
 "	2. normal timeout set to same as default
 	set timeoutlen=1000
 
-	" 3. timeout for Esc
+"	3. timeout for Esc
 	set ttimeoutlen=50
 
 	execute "set <M-w>=\<Esc>w"
