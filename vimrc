@@ -44,6 +44,7 @@ nnoremap	;	q:
 nnoremap	Y	ma1GVGy'a
 nnoremap	`	:ls:buffer
 "nnoremap <silent> W :<C-u>execute 'set ts=' . nr2char(getchar()) . ' sw=0'<CR>
+nnoremap	W	10<C-w>+
 nnoremap	<C-t>	:term
 
 
