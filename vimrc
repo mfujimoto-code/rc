@@ -45,7 +45,7 @@ nnoremap	Y	ma1GVGy'a
 nnoremap	`	:ls:buffer
 "nnoremap <silent> W :<C-u>execute 'set ts=' . nr2char(getchar()) . ' sw=0'<CR>
 nnoremap	W	10<C-w>+
-nnoremap	<C-t>	:term
+"nnoremap	<C-t>	:term
 
 
 " nnoremap	<C-f>	l
@@ -195,13 +195,27 @@ syntax	enable
 " begin :terminal settings 
 " bindings for terminal mode setting
 " Cause <C-\> is hooked for switching IM by system..
-tnoremap <M-z> <C-\><C-n>
+" tnoremap <M-z> <C-\><C-n>
 " Termial may be cleared after .vimrc loaded
 " So, fire the setting at entering the vim
 augroup MyTerminalColor
     autocmd!
     autocmd VimEnter * highlight Terminal guifg=White guibg=Black
 augroup END
+
+function! g:SwitchTerm() abort
+  for bufnr in filter(range(1, bufnr('$')), 'bufexists(v:val)')
+    if getbufvar(bufnr, '&buftype') ==# 'terminal' && job_status(term_getjob(bufnr)) ==# 'run'
+      execute 'buffer' bufnr
+      return
+    endif
+  endfor
+
+  terminal
+endfunction
+
+nnoremap <silent> <C-t> :call g:SwitchTerm()<CR>
+
 " end :terminal settings
 
 " begin - for hilighting cursor line
